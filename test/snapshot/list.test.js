@@ -37,6 +37,10 @@ describe("Test list expressions", function () {
     expect(ast).toMatchSnapshot();
   });
 
+  it("handles nested shorthand lists (fix #512)", () => {
+    expect(parser.parseEval("[$a, [$b, $c]] = [1,[2,3]]")).toMatchSnapshot();
+  });
+
   it("list without trailing commas", () => {
     expect(parser.parseEval("['foo', 'bar'] = $a")).toMatchSnapshot();
   });

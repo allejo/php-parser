@@ -489,7 +489,7 @@ module.exports = {
       expr = this.read_scalar();
       if (expr.kind === "array" && expr.shortForm && this.token === "=") {
         // list assign
-        const list = this.node("list")(expr.items, true);
+        const list = this.convertToList(expr.items);
         if (expr.loc) list.loc = expr.loc;
         const right = this.next().read_expr();
         return result("assign", list, right, "=");
@@ -506,6 +506,23 @@ module.exports = {
 
     // returns variable | scalar
     return expr;
+  },
+
+  /**
+   * Recursively convert nested array to nested list.
+   */
+  convertToList: function (items) {
+    const convertedItems = items.map((entry) => {
+      if (
+        entry.value &&
+        entry.value.kind === "array" &&
+        entry.value.shortForm
+      ) {
+        entry.value = this.convertToList(entry.value.items);
+      }
+      return entry;
+    });
+    return this.node("list")(convertedItems, true);
   },
 
   /**

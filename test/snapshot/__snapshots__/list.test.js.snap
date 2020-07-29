@@ -1020,6 +1020,121 @@ Program {
 }
 `;
 
+exports[`Test list expressions handles nested shorthand lists (fix #512) 1`] = `
+Program {
+  "children": Array [
+    ExpressionStatement {
+      "expression": Assign {
+        "kind": "assign",
+        "left": List {
+          "items": Array [
+            Entry {
+              "byRef": false,
+              "key": null,
+              "kind": "entry",
+              "unpack": false,
+              "value": Variable {
+                "curly": false,
+                "kind": "variable",
+                "name": "a",
+              },
+            },
+            Entry {
+              "byRef": false,
+              "key": null,
+              "kind": "entry",
+              "unpack": false,
+              "value": List {
+                "items": Array [
+                  Entry {
+                    "byRef": false,
+                    "key": null,
+                    "kind": "entry",
+                    "unpack": false,
+                    "value": Variable {
+                      "curly": false,
+                      "kind": "variable",
+                      "name": "b",
+                    },
+                  },
+                  Entry {
+                    "byRef": false,
+                    "key": null,
+                    "kind": "entry",
+                    "unpack": false,
+                    "value": Variable {
+                      "curly": false,
+                      "kind": "variable",
+                      "name": "c",
+                    },
+                  },
+                ],
+                "kind": "list",
+                "shortForm": true,
+              },
+            },
+          ],
+          "kind": "list",
+          "shortForm": true,
+        },
+        "operator": "=",
+        "right": Array {
+          "items": Array [
+            Entry {
+              "byRef": false,
+              "key": null,
+              "kind": "entry",
+              "unpack": false,
+              "value": Number {
+                "kind": "number",
+                "value": "1",
+              },
+            },
+            Entry {
+              "byRef": false,
+              "key": null,
+              "kind": "entry",
+              "unpack": false,
+              "value": Array {
+                "items": Array [
+                  Entry {
+                    "byRef": false,
+                    "key": null,
+                    "kind": "entry",
+                    "unpack": false,
+                    "value": Number {
+                      "kind": "number",
+                      "value": "2",
+                    },
+                  },
+                  Entry {
+                    "byRef": false,
+                    "key": null,
+                    "kind": "entry",
+                    "unpack": false,
+                    "value": Number {
+                      "kind": "number",
+                      "value": "3",
+                    },
+                  },
+                ],
+                "kind": "array",
+                "shortForm": true,
+              },
+            },
+          ],
+          "kind": "array",
+          "shortForm": true,
+        },
+      },
+      "kind": "expressionstatement",
+    },
+  ],
+  "errors": Array [],
+  "kind": "program",
+}
+`;
+
 exports[`Test list expressions list without trailing commas 1`] = `
 Program {
   "children": Array [
@@ -1500,7 +1615,7 @@ Program {
                 },
               },
               "unpack": false,
-              "value": Array {
+              "value": List {
                 "items": Array [
                   Entry {
                     "byRef": false,
@@ -1630,18 +1745,18 @@ Program {
                     },
                   },
                 ],
-                "kind": "array",
+                "kind": "list",
                 "loc": Location {
                   "end": Position {
-                    "column": 19,
+                    "column": 24,
                     "line": 1,
-                    "offset": 19,
+                    "offset": 24,
                   },
                   "source": null,
                   "start": Position {
-                    "column": 7,
+                    "column": 25,
                     "line": 1,
-                    "offset": 7,
+                    "offset": 25,
                   },
                 },
                 "shortForm": true,
